@@ -1,25 +1,20 @@
 import React from 'react';
 import logo from './logo.svg';
+import {Router,Switch,Route} from "react-router-dom";
+import {ToDoListTable} from "../src/components/toDoListTable";
+import { createBrowserHistory } from 'history';
 import './App.css';
 
 function App() {
+  const history = createBrowserHistory();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Router history={history}>
+        <Switch>
+          <Route component={ToDoListTable} path="/to-do-list" exact />
+        </Switch>
+      </Router>
+    </React.Fragment>
   );
 }
 
